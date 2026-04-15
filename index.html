@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bay Fırchaa Kuaför | Ataşehir İstanbul</title>
+  <meta name="description" content="Bay Fırchaa Kuaför için hazırlanan premium demo web sitesi. Ataşehir'de modern traş, damat traşı, saç ve bakım hizmetleri için güçlü ve hızlı iletişim odaklı sunum." />
+  <meta property="og:title" content="Bay Fırchaa Kuaför | Premium Barber Deneyimi" />
+  <meta property="og:description" content="Ataşehir'de modern traş, bakım ve randevu odaklı premium erkek kuaförü deneyimi." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0d0d0d" />
+  <style>
+    :root{
+      --bg:#090909;
+      --bg-soft:#121212;
+      --panel:#151515;
+      --panel-2:#1b1b1b;
+      --line:rgba(212,175,55,.14);
+      --text:#f4f0e8;
+      --muted:#b9ae98;
+      --gold:#d4af37;
+      --gold-soft:#8f7225;
+      --white-soft:rgba(255,255,255,.06);
+      --shadow:0 20px 60px rgba(0,0,0,.45);
+      --radius-xl:30px;
+      --radius-lg:24px;
+      --radius-md:18px;
+      --max:1220px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at top right, rgba(212,175,55,.14), transparent 24%),
+        radial-gradient(circle at 10% 20%, rgba(212,175,55,.08), transparent 20%),
+        linear-gradient(180deg,#080808 0%,#101010 100%);
+      overflow-x:hidden;
+    }
+    a{text-decoration:none;color:inherit}
+    img{display:block;max-width:100%}
+    .container{width:min(calc(100% - 32px), var(--max));margin:0 auto}
+    .section{padding:92px 0;position:relative}
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:10px;
+      padding:10px 14px;border-radius:999px;
+      border:1px solid var(--line);background:rgba(255,255,255,.03);
+      color:var(--gold);font-size:.85rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase
+    }
+    .eyebrow::before{content:"";width:8px;height:8px;border-radius:999px;background:var(--gold);box-shadow:0 0 16px rgba(212,175,55,.7)}
+    .title{font-size:clamp(2.5rem,6vw,5.8rem);line-height:.93;letter-spacing:-.05em;margin:18px 0 18px;max-width:11ch}
+    .subhead{font-size:clamp(1.7rem,3vw,3rem);line-height:1.02;letter-spacing:-.04em;margin:0 0 14px}
+    .lead{color:var(--muted);font-size:1.05rem;line-height:1.8;max-width:60ch}
+    .muted{color:var(--muted)}
+
+    .site-header{
+      position:sticky;top:0;z-index:40;
+      backdrop-filter:blur(14px);
+      background:rgba(9,9,9,.74);
+      border-bottom:1px solid rgba(212,175,55,.08);
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:78px}
+    .brand{display:flex;align-items:center;gap:14px}
+    .brand-mark{
+      width:48px;height:48px;border-radius:16px;background:linear-gradient(135deg,#0b0b0b,#25211a 52%,#d4af37);
+      border:1px solid rgba(212,175,55,.18);position:relative;overflow:hidden;box-shadow:var(--shadow)
+    }
+    .brand-mark::before,.brand-mark::after{content:"";position:absolute;background:rgba(255,255,255,.12);border-radius:999px}
+    .brand-mark::before{width:54px;height:12px;left:-8px;top:10px;transform:rotate(-28deg)}
+    .brand-mark::after{width:30px;height:10px;right:-6px;bottom:10px;transform:rotate(-28deg)}
+    .brand strong{display:block;font-size:1rem}
+    .brand span{display:block;font-size:.8rem;color:var(--muted)}
+    .nav-links,.nav-actions{display:flex;align-items:center;gap:24px}
+    .nav-links a{color:#e5dccf;font-size:.95rem}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      min-height:52px;padding:0 22px;border-radius:999px;border:none;cursor:pointer;
+      font-weight:800;transition:transform .25s ease, box-shadow .25s ease, background .25s ease
+    }
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{background:linear-gradient(135deg,var(--gold),#f0d37a);color:#111;box-shadow:0 16px 34px rgba(212,175,55,.24)}
+    .btn-secondary{background:rgba(255,255,255,.04);border:1px solid rgba(212,175,55,.14);color:#f3efe8}
+    .menu-toggle{display:none;background:none;border:none;padding:8px}
+    .menu-toggle span{display:block;width:24px;height:2px;background:#fff;margin:5px 0;border-radius:2px}
+    .mobile-menu{display:none}
+
+    .hero{padding:42px 0 58px;overflow:hidden}
+    .hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:30px;align-items:center}
+    .hero-copy{padding:40px 0}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin:28px 0 28px}
+    .hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .stat{
+      background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));
+      border:1px solid rgba(212,175,55,.1);border-radius:22px;padding:18px;box-shadow:var(--shadow)
+    }
+    .stat strong{display:block;font-size:1.2rem;margin-bottom:6px;color:#fff}
+    .stat span{display:block;color:var(--muted);font-size:.92rem;line-height:1.5}
+
+    .hero-visual{position:relative;min-height:640px;display:grid;place-items:center}
+    .visual-shell{
+      width:min(100%,560px);height:640px;border-radius:34px;padding:20px;
+      background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));
+      border:1px solid rgba(212,175,55,.12);box-shadow:var(--shadow);position:relative;overflow:hidden
+    }
+    .visual-shell::before{
+      content:"";position:absolute;inset:0;background:
+        radial-gradient(circle at 72% 18%, rgba(212,175,55,.18), transparent 18%),
+        radial-gradient(circle at 18% 82%, rgba(212,175,55,.09), transparent 22%),
+        linear-gradient(145deg, rgba(255,255,255,.06), transparent 44%);
+      pointer-events:none
+    }
+    .visual-core{
+      height:100%;border-radius:28px;position:relative;overflow:hidden;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)),
+        linear-gradient(145deg, #111111 0%, #191919 42%, #0b0b0b 100%);
+      border:1px solid rgba(212,175,55,.1)
+    }
+    .visual-core::before{
+      content:"";position:absolute;inset:24px;border-radius:24px;background:
+        linear-gradient(180deg, rgba(255,255,255,.05), transparent 26%),
+        radial-gradient(circle at top center, rgba(212,175,55,.2), transparent 28%),
+        repeating-linear-gradient(90deg, rgba(255,255,255,.02) 0 1px, transparent 1px 22px),
+        linear-gradient(145deg, rgba(212,175,55,.08), rgba(255,255,255,.02));
+    }
+    .hero-badge,.hero-float{position:absolute;z-index:2;background:rgba(14,14,14,.78);border:1px solid rgba(212,175,55,.14);box-shadow:var(--shadow);backdrop-filter:blur(10px)}
+    .hero-badge{left:26px;top:24px;padding:14px 16px;border-radius:18px;max-width:220px}
+    .hero-badge strong{display:block;margin-bottom:6px}
+    .hero-badge span{font-size:.84rem;color:var(--muted);line-height:1.5}
+    .hero-float{right:20px;bottom:24px;padding:18px;border-radius:20px;max-width:230px}
+    .hero-float strong{display:block;font-size:1.6rem;line-height:1}
+    .hero-float span{display:block;margin-top:8px;color:var(--muted);font-size:.88rem;line-height:1.5}
+    .glow{position:absolute;border-radius:999px;filter:blur(44px);pointer-events:none;opacity:.65}
+    .glow.one{width:170px;height:170px;right:-20px;top:90px;background:rgba(212,175,55,.24)}
+    .glow.two{width:210px;height:210px;left:-40px;bottom:40px;background:rgba(212,175,55,.12)}
+
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:30px}
+    .cards-4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .trust-card,.service-card,.review-card,.faq-item,.info-card,.hours-card,.before-card,.gallery-card,.cta-wrap{
+      background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));
+      border:1px solid rgba(212,175,55,.1);box-shadow:var(--shadow)
+    }
+    .trust-card{padding:24px;border-radius:24px}
+    .icon{width:46px;height:46px;border-radius:16px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(212,175,55,.12),rgba(212,175,55,.04));color:var(--gold);font-weight:900;margin-bottom:14px}
+    .trust-card h3,.service-card h3,.review-card h3,.faq-item h3{margin:0 0 10px;font-size:1.05rem}
+    .trust-card p,.service-card p,.review-card p,.faq-item p{margin:0;color:var(--muted);line-height:1.7}
+
+    .before-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:stretch}
+    .before-stage{
+      min-height:520px;border-radius:30px;overflow:hidden;position:relative;
+      background:linear-gradient(145deg,#111,#181818 58%,#0c0c0c);border:1px solid rgba(212,175,55,.1);box-shadow:var(--shadow)
+    }
+    .before-stage::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg, rgba(255,255,255,.02) 0 1px, transparent 1px 30px)}
+    .split{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr}
+    .side{position:relative;padding:28px}
+    .side::before{content:"";position:absolute;inset:20px;border-radius:24px;border:1px solid rgba(212,175,55,.08)}
+    .side.before::after,.side.after::after{content:"";position:absolute;inset:20px;border-radius:24px}
+    .side.before::after{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01)), radial-gradient(circle at top center, rgba(255,255,255,.06), transparent 32%), linear-gradient(145deg, rgba(90,90,90,.18), rgba(20,20,20,.7))}
+    .side.after::after{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.01)), radial-gradient(circle at top center, rgba(212,175,55,.18), transparent 30%), linear-gradient(145deg, rgba(212,175,55,.16), rgba(20,20,20,.72))}
+    .pill{position:absolute;left:34px;bottom:34px;padding:10px 14px;border-radius:999px;background:#0f0f0f;border:1px solid rgba(212,175,55,.16);font-size:.85rem;font-weight:800;color:var(--gold);z-index:2}
+    .divider{position:absolute;left:50%;top:0;bottom:0;width:3px;background:linear-gradient(180deg, transparent, var(--gold), transparent);transform:translateX(-50%);z-index:2}
+    .handle{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:74px;height:74px;border-radius:999px;background:#0d0d0d;border:1px solid rgba(212,175,55,.18);display:grid;place-items:center;z-index:3;color:var(--gold);font-weight:900;box-shadow:var(--shadow)}
+    .before-side{display:grid;gap:18px}
+    .before-card{padding:24px;border-radius:24px}
+
+    .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .service-card{padding:24px;border-radius:26px;position:relative;overflow:hidden}
+    .service-card::after{content:"";position:absolute;right:-18px;top:-18px;width:100px;height:100px;border-radius:28px;background:linear-gradient(135deg,rgba(212,175,55,.12),transparent 60%);transform:rotate(22deg)}
+    .tag{display:inline-flex;padding:9px 12px;border-radius:999px;background:rgba(212,175,55,.09);color:var(--gold);font-size:.78rem;font-weight:800;margin-bottom:14px}
+
+    .review-track{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(290px,1fr);gap:18px;overflow:auto;scrollbar-width:none;padding-bottom:8px}
+    .review-track::-webkit-scrollbar{display:none}
+    .review-card{padding:24px;border-radius:24px;min-height:230px}
+    .review-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
+    .name{font-weight:800}
+    .stars{color:var(--gold);letter-spacing:.12em}
+
+    .gallery-grid{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:220px 220px;gap:18px}
+    .gallery-card{border-radius:28px;overflow:hidden;position:relative;padding:22px}
+    .gallery-card.large{grid-row:1 / span 2}
+    .gallery-card::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,.06), rgba(0,0,0,.34)), radial-gradient(circle at top left, rgba(212,175,55,.18), transparent 26%), linear-gradient(145deg,#111,#1b1b1b 58%,#2a2314)}
+    .gallery-card:nth-child(2)::before{background:linear-gradient(180deg, rgba(0,0,0,.06), rgba(0,0,0,.34)), radial-gradient(circle at top left, rgba(212,175,55,.18), transparent 26%), linear-gradient(145deg,#101010,#191919 58%,#3a311c)}
+    .gallery-card:nth-child(3)::before{background:linear-gradient(180deg, rgba(0,0,0,.06), rgba(0,0,0,.34)), radial-gradient(circle at top left, rgba(212,175,55,.18), transparent 26%), linear-gradient(145deg,#121212,#1f1f1f 58%,#483b22)}
+    .gallery-card:nth-child(4)::before{background:linear-gradient(180deg, rgba(0,0,0,.06), rgba(0,0,0,.34)), radial-gradient(circle at top left, rgba(212,175,55,.18), transparent 26%), linear-gradient(145deg,#0f0f0f,#1a1a1a 58%,#2e2719)}
+    .gallery-card>*{position:relative;z-index:1}
+    .gallery-card span{display:inline-flex;padding:9px 12px;border-radius:999px;background:rgba(0,0,0,.46);border:1px solid rgba(212,175,55,.12);font-size:.8rem;font-weight:800;color:var(--gold)}
+    .gallery-card h3{margin:12px 0 0;font-size:1.18rem;color:#fff;max-width:12ch;line-height:1.05}
+
+    .cta-wrap{padding:34px;border-radius:30px;display:flex;align-items:center;justify-content:space-between;gap:18px;background:linear-gradient(135deg,#111,#191919 58%,#2d2515)}
+    .cta-wrap p{margin:10px 0 0;color:var(--muted);max-width:54ch;line-height:1.7}
+
+    .faq-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .faq-item{padding:24px;border-radius:24px}
+
+    .contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:20px}
+    .contact-stack{display:grid;gap:18px}
+    .info-card,.hours-card{padding:24px;border-radius:26px}
+    .info-card h3,.hours-card h3{margin:0 0 14px}
+    .row{padding:14px 0;border-bottom:1px solid rgba(212,175,55,.08)}
+    .row:last-child{border-bottom:none;padding-bottom:0}
+    .label{display:block;font-size:.8rem;font-weight:800;letter-spacing:.08em;color:var(--gold);text-transform:uppercase;margin-bottom:6px}
+    .hours-line{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid rgba(212,175,55,.08)}
+    .hours-line:last-child{border-bottom:none;padding-bottom:0}
+    .hours-line span:last-child{font-weight:800}
+    .map{min-height:100%;border-radius:28px;overflow:hidden;border:1px solid rgba(212,175,55,.1);box-shadow:var(--shadow);background:#0d0d0d}
+    .map iframe{width:100%;height:100%;min-height:620px;border:0}
+
+    footer{padding:28px 0 110px;border-top:1px solid rgba(212,175,55,.08)}
+    .footer-grid{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+    .footer-links{display:flex;gap:16px;flex-wrap:wrap;color:var(--muted)}
+    .footer-note{font-size:.92rem;color:var(--muted)}
+    .floating-cta{position:fixed;left:16px;right:16px;bottom:16px;z-index:45;display:none;grid-template-columns:1fr 1fr;gap:12px}
+
+    [data-reveal]{opacity:0;transform:translateY(22px);transition:opacity .7s ease, transform .7s ease}
+    [data-reveal].is-visible{opacity:1;transform:none}
+
+    @media (max-width:1080px){
+      .hero-grid,.before-grid,.contact-grid{grid-template-columns:1fr}
+      .cards-4{grid-template-columns:repeat(2,1fr)}
+      .services-grid{grid-template-columns:repeat(2,1fr)}
+      .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:260px 220px 220px}
+      .gallery-card.large{grid-column:1 / span 2;grid-row:auto}
+      .visual-shell{height:560px}
+      .cta-wrap{flex-direction:column;align-items:flex-start}
+    }
+    @media (max-width:780px){
+      .section{padding:74px 0}
+      .nav-links,.nav-actions{display:none}
+      .menu-toggle{display:block}
+      .hero{padding-top:24px}
+      .hero-stats,.cards-4,.services-grid,.faq-grid{grid-template-columns:1fr}
+      .gallery-grid{grid-template-columns:1fr;grid-template-rows:auto}
+      .gallery-card,.gallery-card.large{min-height:220px}
+      .mobile-menu{gap:12px;padding:0 0 18px}
+      .review-track{grid-auto-columns:86%}
+      .section-head{flex-direction:column;align-items:flex-start}
+      .map iframe{min-height:360px}
+      .floating-cta{display:grid}
+    }
+    @media (prefers-reduced-motion: reduce){
+      html{scroll-behavior:auto}
+      *{animation:none !important;transition:none !important}
+      [data-reveal]{opacity:1;transform:none}
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"HairSalon",
+    "name":"Bay Fırchaa Kuaför",
+    "address":{
+      "@type":"PostalAddress",
+      "streetAddress":"Yenişehir, Baraj Yolu Cad. No:34/B",
+      "addressLocality":"Ataşehir",
+      "addressRegion":"İstanbul",
+      "addressCountry":"TR"
+    },
+    "telephone":"+90 535 659 11 69",
+    "url":"https://www.instagram.com/bayfircha/",
+    "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.5","reviewCount":"244"},
+    "openingHoursSpecification":[
+      {"@type":"OpeningHoursSpecification","dayOfWeek":"Monday","opens":"09:00","closes":"20:00"},
+      {"@type":"OpeningHoursSpecification","dayOfWeek":"Tuesday","opens":"09:00","closes":"20:00"},
+      {"@type":"OpeningHoursSpecification","dayOfWeek":"Wednesday","opens":"09:00","closes":"20:00"},
+      {"@type":"OpeningHoursSpecification","dayOfWeek":"Thursday","opens":"09:00","closes":"20:00"},
+      {"@type":"OpeningHoursSpecification","dayOfWeek":"Friday","opens":"09:00","closes":"20:00"},
+      {"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"09:00","closes":"20:00"},
+      {"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"10:00","closes":"20:00"}
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="Bay Fırchaa Kuaför anasayfa">
+        <div class="brand-mark"></div>
+        <div>
+          <strong>Bay Fırchaa Kuaför</strong>
+          <span>Ataşehir · İstanbul</span>
+        </div>
+      </a>
+      <nav class="nav-links">
+        <a href="#hizmetler">Hizmetler</a>
+        <a href="#vibe">Salon Vibe</a>
+        <a href="#iletisim">İletişim</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="btn btn-secondary" href="tel:+905356591169">Ara</a>
+        <a class="btn btn-primary" href="https://wa.me/905356591169?text=Merhaba%20Bay%20F%C4%B1r%C3%A7a%20Kuaf%C3%B6r%20i%C3%A7in%20randevu%20almak%20istiyorum" target="_blank" rel="noreferrer">WhatsApp</a>
+      </div>
+      <button class="menu-toggle" id="menuBtn" aria-label="Menü">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="container mobile-menu" id="mobileMenu">
+      <a href="#hizmetler">Hizmetler</a>
+      <a href="#vibe">Salon Vibe</a>
+      <a href="#iletisim">İletişim</a>
+      <a class="btn btn-secondary" href="tel:+905356591169">Telefonla Ara</a>
+      <a class="btn btn-primary" href="https://wa.me/905356591169?text=Merhaba%20Bay%20F%C4%B1r%C3%A7a%20Kuaf%C3%B6r%20i%C3%A7in%20randevu%20almak%20istiyorum" target="_blank" rel="noreferrer">WhatsApp'tan Yaz</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy" data-reveal>
+          <div class="eyebrow">4.5 puan · 244 yorum · Modern barber vibe</div>
+          <h1 class="title">Tarzı net görünen güçlü bir görünüm için doğru adres</h1>
+          <p class="lead">Bay Fırchaa Kuaför modern traş stilleri, damat traşı, saç işlemleri ve bakım hizmetleriyle Ataşehir'de güçlü, temiz ve premium bir erkek kuaförü deneyimi sunar.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://wa.me/905356591169?text=Merhaba%20Bay%20F%C4%B1r%C3%A7a%20Kuaf%C3%B6r%20i%C3%A7in%20randevu%20almak%20istiyorum" target="_blank" rel="noreferrer">Hemen Randevu Al</a>
+            <a class="btn btn-secondary" href="tel:+905356591169">Telefonla Ara</a>
+            <a class="btn btn-secondary" href="#hizmetler">Hizmetleri Gör</a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat">
+              <strong>244+</strong>
+              <span>Güven oluşturan yorum sayısı</span>
+            </div>
+            <div class="stat">
+              <strong>09:00–20:00</strong>
+              <span>Haftanın çoğu günü erişilebilir randevu akışı</span>
+            </div>
+            <div class="stat">
+              <strong>Premium</strong>
+              <span>Güçlü görünüm modern detay temiz bitiş</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual" data-reveal>
+          <div class="glow one"></div>
+          <div class="glow two"></div>
+          <div class="visual-shell">
+            <div class="visual-core">
+              <div class="hero-badge">
+                <strong>Modern traş stilleri</strong>
+                <span>İlk bakışta düzenli temiz ve karakterli görünüm hissi veren premium sunum</span>
+              </div>
+              <div class="hero-float">
+                <strong>4.5★</strong>
+                <span>Düzenli hizmet akışı ve yoğun ziyaretçi güveni için güçlü bir sosyal kanıt alanı</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="cards-4">
+          <article class="trust-card" data-reveal>
+            <div class="icon">01</div>
+            <h3>Yoğun güven sinyali</h3>
+            <p>244 yorum ve 4.5 puan yeni müşteri için güçlü bir ilk güven algısı kurar.</p>
+          </article>
+          <article class="trust-card" data-reveal>
+            <div class="icon">02</div>
+            <h3>Her güne uygun plan</h3>
+            <p>Haftanın yedi günü açık olması randevuya dönüş ihtimalini ciddi biçimde artırır.</p>
+          </article>
+          <article class="trust-card" data-reveal>
+            <div class="icon">03</div>
+            <h3>Çok yönlü hizmet</h3>
+            <p>Traş, damat paketi, saç işlemleri ve bakım aynı noktada toparlanır.</p>
+          </article>
+          <article class="trust-card" data-reveal>
+            <div class="icon">04</div>
+            <h3>Hızlı iletişim</h3>
+            <p>Telefon ve WhatsApp erişimi tek dokunuşla müşteriyi doğrudan aksiyona taşır.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container before-grid">
+        <div class="before-stage" data-reveal>
+          <div class="split">
+            <div class="side before"><div class="pill">Önce</div></div>
+            <div class="side after"><div class="pill">Sonra</div></div>
+          </div>
+          <div class="divider"></div>
+          <div class="handle">⇄</div>
+        </div>
+        <div class="before-side">
+          <div>
+            <div class="eyebrow">Öncesi Sonrası Etkisi</div>
+            <h2 class="subhead">Doğru kesim duruşu bir anda değiştirir</h2>
+            <p class="lead">Bu alan modern traş stilleri, damat traşı veya bakım sonrası temiz ve net görünüm farkını premium biçimde göstermek için tasarlandı. Gerçek salon görselleri eklendiğinde etkisi daha da büyür.</p>
+          </div>
+          <article class="before-card" data-reveal>
+            <h3>Modern ve temiz bitiş</h3>
+            <p class="muted">Maskülen ama şık bir görünüm vermek için siyah altın temalı güçlü bir vitrin hissi kurgulandı.</p>
+          </article>
+          <article class="before-card" data-reveal>
+            <h3>Mobilde kaydırmalı premium his</h3>
+            <p class="muted">Müşteri parmağıyla kaydırdığında duran sonra devam eden hafif ama dikkat çekici bir sunum mantığı düşünülür.</p>
+          </article>
+          <a class="btn btn-primary" href="https://wa.me/905356591169?text=Merhaba%20Bay%20F%C4%B1r%C3%A7a%20Kuaf%C3%B6r%20i%C3%A7in%20randevu%20almak%20istiyorum" target="_blank" rel="noreferrer">Randevu İçin Yaz</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="hizmetler">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <div>
+            <div class="eyebrow">Hizmetler</div>
+            <h2 class="subhead">En çok dikkat çeken servisler</h2>
+          </div>
+          <p class="lead">Verilen bilgilerden yola çıkarak en çok satışa dönecek hizmetler üstte konumlandırıldı ve düzenli bir erkek bakım deneyimi öne çıkarıldı.</p>
+        </div>
+        <div class="services-grid">
+          <article class="service-card" data-reveal>
+            <span class="tag">Öne Çıkan</span>
+            <h3>Modern Traş Stilleri</h3>
+            <p>Güncel çizgiler ve temiz bitiş isteyen müşteriler için güçlü ilk tercih alanı.</p>
+          </article>
+          <article class="service-card" data-reveal>
+            <span class="tag">Özel Gün</span>
+            <h3>Damat Traşı</h3>
+            <p>Özel gün öncesi daha özenli ve premium hizmet algısı yaratan önemli dönüşüm noktası.</p>
+          </article>
+          <article class="service-card" data-reveal>
+            <span class="tag">Bakım</span>
+            <h3>Saç Boyama</h3>
+            <p>Görünüm yenilemek isteyen müşteriler için salonun teknik hizmet tarafını öne çıkarır.</p>
+          </article>
+          <article class="service-card" data-reveal>
+            <span class="tag">Hacim</span>
+            <h3>Saç Kaynaklama</h3>
+            <p>Daha dolgun ve dikkat çekici görünüm isteyen müşteriler için farklılaşan hizmet alanı.</p>
+          </article>
+          <article class="service-card" data-reveal>
+            <span class="tag">Tamamlayıcı</span>
+            <h3>Manikür & Pedikür</h3>
+            <p>Bakımı yalnızca saçla sınırlamayan çok yönlü hizmet algısı oluşturur.</p>
+          </article>
+          <article class="service-card" data-reveal>
+            <span class="tag">Ek Hizmet</span>
+            <h3>Ağda</h3>
+            <p>Kişisel bakım rutininin daha bütün görünmesini sağlayan tamamlayıcı servis.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="vibe">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <div>
+            <div class="eyebrow">Salon Vibe</div>
+            <h2 class="subhead">Güçlü koyu tonlar temiz çizgiler premium detaylar</h2>
+          </div>
+          <p class="lead">Fotoğraf olmadan da ağır ve pahalı his veren bir görünüm için siyah altın çizgide maskülen bir vitrin dili kuruldu.</p>
+        </div>
+        <div class="gallery-grid">
+          <article class="gallery-card large" data-reveal>
+            <span>Premium Interior</span>
+            <h3>İlk bakışta kalite ve düzen hissi veren güçlü atmosfer</h3>
+          </article>
+          <article class="gallery-card" data-reveal>
+            <span>Clean Fade</span>
+            <h3>Keskin ve net görünüm</h3>
+          </article>
+          <article class="gallery-card" data-reveal>
+            <span>Grooming</span>
+            <h3>Bakım odaklı detaylar</h3>
+          </article>
+          <article class="gallery-card" data-reveal>
+            <span>Wedding Prep</span>
+            <h3>Damat hazırlığında premium sunum</h3>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="cta-wrap" data-reveal>
+          <div>
+            <h2 class="subhead" style="margin:0">Bugün iletişime geçin ve zamanınızı ayırın</h2>
+            <p>Özellikle yoğun saatlerde veya damat traşı gibi daha planlı hizmetlerde erken randevu daha rahat akış sağlar.</p>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:12px">
+            <a class="btn btn-primary" href="https://wa.me/905356591169?text=Merhaba%20Bay%20F%C4%B1r%C3%A7a%20Kuaf%C3%B6r%20i%C3%A7in%20randevu%20almak%20istiyorum" target="_blank" rel="noreferrer">WhatsApp</a>
+            <a class="btn btn-secondary" href="tel:+905356591169">Telefonla Ara</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <div>
+            <div class="eyebrow">Sık Sorulanlar</div>
+            <h2 class="subhead">Müşterinin kararını hızlandıran kısa cevaplar</h2>
+          </div>
+        </div>
+        <div class="faq-grid">
+          <article class="faq-item" data-reveal>
+            <h3>Hangi hizmetler öne çıkıyor</h3>
+            <p>Modern traş stilleri, damat traşı, saç boyama ve saç kaynaklama gibi farklılaşan hizmetler öne çıkıyor.</p>
+          </article>
+          <article class="faq-item" data-reveal>
+            <h3>Randevu için en hızlı yol hangisi</h3>
+            <p>Telefon ve WhatsApp bağlantılarıyla tek dokunuşta iletişim kurulabilir.</p>
+          </article>
+          <article class="faq-item" data-reveal>
+            <h3>Haftanın hangi günleri açık</h3>
+            <p>Bay Fırcha haftanın yedi günü açık. Pazar günü açılış saati 10:00.</p>
+          </article>
+          <article class="faq-item" data-reveal>
+            <h3>Bu salonun güven tarafı ne</h3>
+            <p>4.5 puan ve 244 yorum yeni ziyaretçi için ciddi bir sosyal kanıt oluşturur.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="iletisim">
+      <div class="container contact-grid">
+        <div class="contact-stack">
+          <article class="info-card" data-reveal>
+            <h3>İletişim</h3>
+            <div class="row">
+              <span class="label">Telefon</span>
+              <a href="tel:+905356591169">0535 659 11 69</a>
+            </div>
+            <div class="row">
+              <span class="label">WhatsApp</span>
+              <a href="https://wa.me/905356591169?text=Merhaba%20Bay%20F%C4%B1r%C3%A7a%20Kuaf%C3%B6r%20i%C3%A7in%20randevu%20almak%20istiyorum" target="_blank" rel="noreferrer">Randevu için yazın</a>
+            </div>
+            <div class="row">
+              <span class="label">Instagram</span>
+              <a href="https://www.instagram.com/bayfircha/" target="_blank" rel="noreferrer">@bayfircha</a>
+            </div>
+            <div class="row">
+              <span class="label">Adres</span>
+              <span>Yenişehir, Baraj Yolu Cad. No:34/B, 34779 Ataşehir / İstanbul</span>
+            </div>
+          </article>
+          <article class="hours-card" data-reveal>
+            <h3>Çalışma Saatleri</h3>
+            <div class="hours-line"><span>Pazartesi</span><span>09:00–20:00</span></div>
+            <div class="hours-line"><span>Salı</span><span>09:00–20:00</span></div>
+            <div class="hours-line"><span>Çarşamba</span><span>09:00–20:00</span></div>
+            <div class="hours-line"><span>Perşembe</span><span>09:00–20:00</span></div>
+            <div class="hours-line"><span>Cuma</span><span>09:00–20:00</span></div>
+            <div class="hours-line"><span>Cumartesi</span><span>09:00–20:00</span></div>
+            <div class="hours-line"><span>Pazar</span><span>10:00–20:00</span></div>
+          </article>
+        </div>
+        <div class="map" data-reveal>
+          <iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Bay Fırchaa Kuaför konum" src="https://www.google.com/maps?q=Yeni%C5%9Fehir%20Baraj%20Yolu%20Cad%20No%2034%20B%20Ata%C5%9Fehir%20%C4%B0stanbul&z=15&output=embed"></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <strong>Bay Fırchaa Kuaför</strong>
+        <div class="footer-note">Ataşehir'de güçlü görünüm temiz işçilik ve hızlı randevu odaklı premium barber sunumu</div>
+      </div>
+      <div class="footer-links">
+        <a href="#top">Anasayfa</a>
+        <a href="#hizmetler">Hizmetler</a>
+        <a href="#vibe">Salon Vibe</a>
+        <a href="#iletisim">İletişim</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="floating-cta">
+    <a class="btn btn-secondary" href="tel:+905356591169">Ara</a>
+    <a class="btn btn-primary" href="https://wa.me/905356591169?text=Merhaba%20Bay%20F%C4%B1r%C3%A7a%20Kuaf%C3%B6r%20i%C3%A7in%20randevu%20almak%20istiyorum" target="_blank" rel="noreferrer">WhatsApp</a>
+  </div>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if(menuBtn){
+      menuBtn.addEventListener('click', () => {
+        mobileMenu.style.display = mobileMenu.style.display === 'grid' ? 'none' : 'grid';
+      });
+    }
+
+    const reveals = document.querySelectorAll('[data-reveal]');
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(reduce){
+      reveals.forEach(el => el.classList.add('is-visible'));
+    } else {
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting){
+            entry.target.classList.add('is-visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, {threshold:.14});
+      reveals.forEach(el => io.observe(el));
+    }
+  </script>
+</body>
+</html>
